@@ -7,7 +7,7 @@ interface CTAProps {
 
 export function CTA({ title = "Закажите обслуживание бассейна в Сочи", description = "Оставьте заявку — перезвоним и рассчитаем стоимость." }: CTAProps) {
   return (
-    <section className="bg-[var(--primary)] py-12 text-white shadow-md">
+    <section className="bg-[var(--primary)] py-12 mt-10 text-white shadow-md">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
         <h2 className="font-heading text-2xl font-bold sm:text-3xl">{title}</h2>
         <p className="mt-2 text-white/90">{description}</p>

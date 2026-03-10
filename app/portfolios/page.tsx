@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import Image from "next/image";
 import { portfolioItems } from "@/lib/data";
 import { CTA } from "../components/CTA";
 
@@ -23,10 +23,16 @@ export default function PortfoliosPage() {
             key={item.id}
             className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-sm transition hover:shadow-md"
           >
-            <div
-              className="aspect-[4/3] w-full bg-gradient-to-br from-teal-200 via-cyan-200 to-teal-300"
-              aria-hidden
-            />
+            <div className="relative aspect-[4/3] w-full">
+              <Image
+                src={item.image}
+                alt={item.title}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                priority={item.id === "1"}
+              />
+            </div>
             <div className="p-4">
               <span className="text-xs font-medium text-[var(--primary)]">{item.type}</span>
               <h2 className="mt-1 font-heading text-lg font-semibold">{item.title}</h2>

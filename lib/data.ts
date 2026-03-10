@@ -1,16 +1,16 @@
 export const site = {
   name: "Бассейн Сервис Сочи",
-  phone: "+7 (862) 260-12-34",
+  phone: "+7 (938) 418-58-34",
   region: "Сочи",
   address: "г. Сочи, Краснодарский край",
 } as const;
 
 export const priceItems = [
-  { name: "Комплексное обслуживание (до 30 м³)", price: 15000, unit: "мес" },
-  { name: "Комплексное обслуживание (30–50 м³)", price: 22000, unit: "мес" },
-  { name: "Комплексное обслуживание (50–80 м³)", price: 30000, unit: "мес" },
-  { name: "Комплексное обслуживание (80+ м³)", price: 40000, unit: "мес" },
-  { name: "Разовая чистка бассейна", price: 8000, unit: "раз" },
+  { name: "Комплексное обслуживание (до 30 м³)", price: 12000, unit: "мес" },
+  { name: "Комплексное обслуживание (30–50 м³)", price: 19000, unit: "мес" },
+  { name: "Комплексное обслуживание (50–80 м³)", price: 27000, unit: "мес" },
+  { name: "Комплексное обслуживание (80+ м³)", price: 36000, unit: "мес" },
+  { name: "Разовая чистка бассейна", price: 6000, unit: "раз" },
   { name: "Обслуживание оборудования (диагностика)", price: 3500, unit: "раз" },
   { name: "Ремонт насоса", price: 4500, unit: "от" },
   { name: "Замена песочного фильтра", price: 2500, unit: "от" },
@@ -25,7 +25,7 @@ export const portfolioItems = [
     type: "Частный дом",
     volume: "45 м³",
     description: "Комплексное обслуживание с системой водоподготовки без хлора.",
-    image: "/img/portfolio-1.jpg",
+    image: "/portfolio/caravella_1.webp",
   },
   {
     id: "2",
@@ -33,7 +33,7 @@ export const portfolioItems = [
     type: "Малая гостиница",
     volume: "80 м³",
     description: "Строительство под ключ и ежемесячное сервисное обслуживание.",
-    image: "/img/portfolio-2.jpg",
+    image: "/portfolio/caravella_2.webp",
   },
   {
     id: "3",
@@ -41,7 +41,7 @@ export const portfolioItems = [
     type: "Дача",
     volume: "25 м³",
     description: "Обслуживание каркасного бассейна, водоподготовка без хлора.",
-    image: "/img/portfolio-3.jpg",
+    image: "/portfolio/mini_hotel_kp.webp",
   },
   {
     id: "4",
@@ -49,7 +49,7 @@ export const portfolioItems = [
     type: "Частный дом",
     volume: "12 м³",
     description: "Обслуживание спа-бассейна и гидромассажа.",
-    image: "/img/portfolio-4.jpg",
+    image: "/portfolio/spa.webp",
   },
   {
     id: "5",
@@ -57,7 +57,7 @@ export const portfolioItems = [
     type: "Частный дом",
     volume: "15 м³",
     description: "Безопасная водоподготовка без хлора для детей.",
-    image: "/img/portfolio-5.jpg",
+    image: "/portfolio/kinder_pool_cottage.webp",
   },
   {
     id: "6",
@@ -65,7 +65,7 @@ export const portfolioItems = [
     type: "Малая гостиница",
     volume: "60 м³",
     description: "Договор на обслуживание, ремонт оборудования.",
-    image: "/img/portfolio-6.jpg",
+    image: "/portfolio/hotel_pool_imeretinka.webp",
   },
 ];
 

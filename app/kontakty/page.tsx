@@ -46,7 +46,9 @@ export default function KontaktyPage() {
           Выезжаем на объекты в Сочи, Адлер, Красная Поляна, Лазаревское, Имеретинка и другие районы Большого Сочи. Обслуживание бассейнов в Сочи и пригородах — по договору с фиксированной стоимостью в месяц.
         </p>
         <div className="mt-4 aspect-video w-full overflow-hidden rounded-xl border border-[var(--border)] bg-gradient-to-br from-slate-200 to-slate-300">
-          {/* Placeholder for map — можно встроить Yandex/Google Map по координатам Сочи */}
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A416d1d5a06f90ff1f667bf9f74438499776854aedd79920ee8e4b57ab3c17e03&amp;source=constructor"
+            width="1131"
+            height="720"></iframe>
           <div className="flex h-full items-center justify-center text-[var(--muted)]">
             Карта: г. Сочи, Краснодарский край
           </div>

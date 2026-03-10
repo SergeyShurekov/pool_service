@@ -36,8 +36,8 @@ export function Footer() {
             <p className="mt-2 text-sm">
               г. Сочи, Краснодарский край
               <br />
-              <a href="tel:+78622601234" className="text-[var(--primary)] hover:underline">
-                +7 (862) 260-12-34
+              <a href="tel:+79384185834" className="text-[var(--primary)] hover:underline">
+                +7 (938) 418-58-34
               </a>
             </p>
           </div>

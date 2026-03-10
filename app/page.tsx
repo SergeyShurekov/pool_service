@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { CTA } from "./components/CTA";
 import { PriceTable } from "./components/PriceTable";
+import { portfolioItems } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -94,7 +96,34 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
         <h2 className="font-heading text-2xl font-bold sm:text-3xl">Наши объекты</h2>
         <p className="mt-2 text-[var(--muted)]">Частные дома и малые гостиницы в Сочи, Адлере, Красной Поляне.</p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {portfolioItems.slice(0, 3).map((item) => (
+            <article
+              key={item.id}
+              className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-sm transition hover:shadow-md"
+            >
+              <div className="relative aspect-[4/3] w-full">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  priority={item.id === "1"}
+                />
+              </div>
+              <div className="p-4">
+                <span className="text-xs font-medium text-[var(--primary)]">{item.type}</span>
+                <h2 className="mt-1 font-heading text-lg font-semibold">{item.title}</h2>
+                <p className="mt-1 text-sm text-[var(--muted)]">{item.volume}</p>
+                <p className="mt-2 text-sm text-[var(--muted)]">{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {/* <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { title: "Частный бассейн, Адлер", type: "45 м³" },
             { title: "Мини-отель, Красная Поляна", type: "80 м³" },
@@ -108,7 +137,7 @@ export default function Home() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
         <p className="mt-6 text-center">
           <Link href="/portfolios" className="font-semibold text-[var(--primary)] hover:underline">
             Вся галерея работ →

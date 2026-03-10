@@ -1,14 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { type ComponentProps, useState } from "react";
+
+type FormSubmitHandler = NonNullable<ComponentProps<"form">["onSubmit"]>;
 
 export function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const handleSubmit: FormSubmitHandler = async (e) => {
     e.preventDefault();
-    setSent(true);
-  }
+    setError(null);
+    setIsSending(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: formData.get("name") as string,
+      phone: formData.get("phone") as string,
+      message: (formData.get("message") as string) || "",
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        throw new Error("Ошибка при отправке");
+      }
+
+      setSent(true);
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      setError("Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.");
+    } finally {
+      setIsSending(false);
+    }
+  };
 
   return (
     <>
@@ -42,11 +78,17 @@ export function ContactForm() {
             rows={3}
             className="w-full rounded-lg border border-[var(--border)] bg-[var(--card)] px-3 py-2 text-sm shadow-inner"
           />
+          {error && (
+            <p className="text-sm text-red-500">
+              {error}
+            </p>
+          )}
           <button
             type="submit"
-            className="w-full rounded-full bg-[var(--primary)] py-2.5 text-sm font-medium text-white shadow-sm hover:bg-[var(--primary-hover)] hover:shadow-md"
+            className="w-full rounded-full bg-[var(--primary)] py-2.5 text-sm font-medium text-white shadow-sm hover:bg-[var(--primary-hover)] hover:shadow-md disabled:cursor-not-allowed disabled:opacity-70"
+            disabled={isSending}
           >
-            Отправить заявку
+            {isSending ? "Отправка..." : "Отправить заявку"}
           </button>
         </form>
       )}
