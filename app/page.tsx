@@ -47,39 +47,54 @@ export default function Home() {
             {
               href: "/obsluzhivanie-basseynov",
               title: "Обслуживание бассейнов",
+              icon: "/obsluzivanie-baseyna.svg",
               desc: "Комплексное сервисное обслуживание, чистка, договор, прайс.",
             },
             {
               href: "/obsluzhivanie-basseynov-dlya-chastnyh-domov",
               title: "Для домов и гостиниц",
+              icon: "/hotel.svg",
               desc: "Обслуживание частных бассейнов и бассейнов малых гостиниц в Сочи.",
             },
             {
               href: "/remont-oborudovaniya-basseynov",
               title: "Ремонт оборудования",
+              icon: "/servis-remont.svg",
               desc: "Ремонт насосов, фильтров, замена оборудования для бассейнов.",
             },
             {
               href: "/himicheskaya-obrabotka-vody",
               title: "Водоподготовка",
+              icon: "/himiya-bez-hlora.svg",
               desc: "Химическая обработка воды, водоподготовка. Ответы на вопросы про хлорку.",
             },
             {
               href: "/basseyn-bez-hlora",
               title: "Бассейн без хлора",
-              desc: "Чистая вода без хлора — наше УТП. Без запаха и вреда для кожи.",
+              icon: "/basseyn-bez-hlora.svg",
+              desc: "Чистая вода без хлора — это возможно. Без запаха и вреда для кожи.",
             },
             {
               href: "/kalkulyator",
               title: "Калькулятор",
+              icon: "/rascitat-stoimost.svg",
               desc: "Узнайте стоимость обслуживания бассейна в месяц за минуту.",
             },
           ].map((card) => (
             <Link
               key={card.href}
               href={card.href}
-              className="group rounded-xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm transition hover:border-[var(--primary)] hover:shadow-md"
+              className="group flex h-full flex-col rounded-xl border border-[var(--border)] bg-[var(--card)] p-7 shadow-sm transition hover:border-[var(--primary)] hover:shadow-md"
             >
+              <Image
+                src={card.icon}
+                alt=""
+                width={288}
+                height={288}
+                className="mb-6"
+                aria-hidden
+                unoptimized
+              />
               <h3 className="font-heading font-semibold text-[var(--primary)] group-hover:underline">
                 {card.title}
               </h3>
