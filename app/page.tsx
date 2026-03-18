@@ -98,7 +98,7 @@ export default function Home() {
               <h3 className="font-heading font-semibold text-[var(--primary)] group-hover:underline">
                 {card.title}
               </h3>
-              <p className="mt-2 text-sm text-[var(--muted)]">{card.desc}</p>
+              <p className="mt-2 text-base text-[var(--muted)]">{card.desc}</p>
             </Link>
           ))}
         </div>

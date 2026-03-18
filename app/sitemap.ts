@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 
 const base = "https://pool-service-sochi.ru";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",

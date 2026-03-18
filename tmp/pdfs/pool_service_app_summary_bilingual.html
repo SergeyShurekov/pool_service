@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Pool Service Sochi - App Summary</title>
+<style>
+  @page { size: A4; margin: 18mm; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", "Arial", sans-serif;
+    color: #0f1b1d;
+    background: #ffffff;
+    font-size: 11pt;
+    line-height: 1.35;
+  }
+  .page {
+    width: 100%;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10mm 0 6mm 0;
+    border-bottom: 2px solid #0e6f77;
+  }
+  .title {
+    font-size: 18pt;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+  .subtitle {
+    font-size: 10pt;
+    color: #2d4e53;
+  }
+  .brand-chip {
+    background: linear-gradient(135deg, #0e6f77, #21a4a6);
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 9pt;
+    font-weight: 600;
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12mm;
+    margin-top: 8mm;
+  }
+  h2 {
+    font-size: 12pt;
+    margin: 6mm 0 2mm 0;
+    color: #0e6f77;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  p { margin: 0 0 2mm 0; }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2mm 0;
+  }
+  li {
+    margin: 0 0 2mm 0;
+    padding-left: 10px;
+    position: relative;
+  }
+  li:before {
+    content: "-";
+    position: absolute;
+    left: 0;
+    color: #0e6f77;
+    font-weight: 700;
+  }
+  .section {
+    border-left: 3px solid #e2f1f2;
+    padding-left: 8px;
+  }
+  .note {
+    font-size: 9.5pt;
+    color: #4a6165;
+  }
+  .footer {
+    margin-top: 6mm;
+    padding-top: 4mm;
+    border-top: 1px solid #d9e5e7;
+    font-size: 9pt;
+    color: #4a6165;
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div>
+        <div class="title">Pool Service Sochi - App Summary</div>
+        <div class="subtitle">Bilingual one-page brief (EN + RU)</div>
+      </div>
+      <div class="brand-chip">Brand: Aqua-Teal + Clean Coastal</div>
+    </div>
+
+    <div class="columns">
+      <div>
+        <div class="section">
+          <h2>What It Is</h2>
+          <p>Next.js marketing site for pool construction and maintenance services in the Sochi region.</p>
+          <p>Includes lead capture, pricing, and portfolio content.</p>
+        </div>
+
+        <div class="section">
+          <h2>Who It Is For</h2>
+          <p>Homeowners and small hotel or property managers in Sochi seeking pool maintenance, repair, and chlorine-free water treatment.</p>
+        </div>
+
+        <div class="section">
+          <h2>What It Does</h2>
+          <ul>
+            <li>Service landing pages for maintenance, repair, and water treatment.</li>
+            <li>Chlorine-free pool positioning and related content.</li>
+            <li>Interactive monthly cost calculator (volume, visits, options).</li>
+            <li>Price table with service tiers.</li>
+            <li>Portfolio gallery of completed projects.</li>
+            <li>Contact page with phone links and web form.</li>
+            <li>Sends form submissions to email via SMTP.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>How It Works</h2>
+          <ul>
+            <li>Next.js App Router pages under app/ render content and UI.</li>
+            <li>Shared UI components in app/components.</li>
+            <li>Static content and rates in lib/data.ts.</li>
+            <li>Contact form -> POST /api/contact -> nodemailer -> SMTP -> CONTACT_TO_EMAIL.</li>
+            <li>Assets served from public/ (icons, portfolio images).</li>
+            <li>Database: Not found in repo.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>How To Run</h2>
+          <ul>
+            <li>npm install</li>
+            <li>Set env vars: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM, CONTACT_TO_EMAIL.</li>
+            <li>npm run dev and open http://localhost:3000.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <div class="section">
+          <h2>Что Это</h2>
+          <p>Маркетинговый сайт на Next.js для строительства и обслуживания бассейнов в Сочи.</p>
+          <p>Есть сбор заявок, цены и портфолио.</p>
+        </div>
+
+        <div class="section">
+          <h2>Для Кого</h2>
+          <p>Владельцы частных домов и небольших гостиниц в Сочи, которым нужно обслуживание, ремонт и водоподготовка без хлора.</p>
+        </div>
+
+        <div class="section">
+          <h2>Что Делает</h2>
+          <ul>
+            <li>Лендинги услуг: обслуживание, ремонт, водоподготовка.</li>
+            <li>Позиционирование и контент о бассейнах без хлора.</li>
+            <li>Калькулятор стоимости в месяц (объем, выезды, опции).</li>
+            <li>Прайс с типовыми тарифами.</li>
+            <li>Галерея выполненных объектов.</li>
+            <li>Контакты с телефонами и формой заявки.</li>
+            <li>Отправка заявок на email через SMTP.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Как Работает</h2>
+          <ul>
+            <li>Страницы App Router в app/ рендерят контент и интерфейс.</li>
+            <li>Общие компоненты в app/components.</li>
+            <li>Данные и тарифы в lib/data.ts.</li>
+            <li>Форма -> POST /api/contact -> nodemailer -> SMTP -> CONTACT_TO_EMAIL.</li>
+            <li>Статика в public/ (иконки, изображения портфолио).</li>
+            <li>База данных: Not found in repo.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Как Запустить</h2>
+          <ul>
+            <li>npm install</li>
+            <li>Переменные окружения: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM, CONTACT_TO_EMAIL.</li>
+            <li>npm run dev и открыть http://localhost:3000.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer note">
+      Source: repo evidence only. Missing items are explicitly marked as "Not found in repo."
+    </div>
+  </div>
+</body>
+</html>

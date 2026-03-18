@@ -1,0 +1,76 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 2991 >>
+stream
+BT /F2 18 Tf 1 0 0 1 50 791.89 Tm (Pool Service Sochi - App Summary) Tj ET
+BT /F2 12 Tf 1 0 0 1 50 769.89 Tm (What It Is) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 751.89 Tm (Next.js marketing site for pool construction and maintenance services in Sochi, Russia.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 738.89 Tm (Includes lead capture and pricing/portfolio pages.) Tj ET
+BT /F2 12 Tf 1 0 0 1 50 725.89 Tm (Who It Is For) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 707.89 Tm (Homeowners and small hotel/property managers in the Sochi area seeking pool services.) Tj ET
+BT /F2 12 Tf 1 0 0 1 50 694.89 Tm (What It Does) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 676.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 676.89 Tm (Service landing pages for maintenance, repair, and chlorine-free water treatment.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 663.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 663.89 Tm (Interactive monthly cost calculator \(volume, visits, options\).) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 650.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 650.89 Tm (Price table with typical service tiers.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 637.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 637.89 Tm (Portfolio gallery of completed projects.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 624.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 624.89 Tm (Contact page with phone links and web form.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 611.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 611.89 Tm (Sends contact form submissions to email via SMTP.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 598.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 598.89 Tm (SEO basics: metadata, JSON-LD LocalBusiness, sitemap, robots.) Tj ET
+BT /F2 12 Tf 1 0 0 1 50 585.89 Tm (How It Works \(Architecture\)) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 567.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 567.89 Tm (Next.js App Router pages in app/ render static content and client UI.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 554.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 554.89 Tm (Shared UI components in app/components \(Header, Footer, CTA, PriceTable, ContactForm\).) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 541.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 541.89 Tm (Static content and rates in lib/data.ts.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 528.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 528.89 Tm (Contact form -> POST /api/contact -> nodemailer -> SMTP -> CONTACT_TO_EMAIL.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 515.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 515.89 Tm (Assets served from public/ \(icons, portfolio images\).) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 502.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 502.89 Tm (Database: Not found in repo.) Tj ET
+BT /F2 12 Tf 1 0 0 1 50 489.89 Tm (How To Run \(Minimal\)) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 471.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 471.89 Tm (npm install) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 458.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 458.89 Tm (Set env vars: SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SMTP_FROM, CONTACT_TO_EMAIL.) Tj ET
+BT /F1 10 Tf 1 0 0 1 50 445.89 Tm (-) Tj ET
+BT /F1 10 Tf 1 0 0 1 62 445.89 Tm (npm run dev \(open http://localhost:3000\).) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000257 00000 n 
+0000003300 00000 n 
+0000003370 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3445
+%%EOF
