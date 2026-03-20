@@ -3,5 +3,10 @@ services:
     build: .
     ports:
       - "3000:3000"
-    env_file:
-      - .env.local
+    environment:
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+      SMTP_FROM: ${SMTP_FROM}
+      CONTACT_TO_EMAIL: ${CONTACT_TO_EMAIL}

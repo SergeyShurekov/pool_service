@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pool Service Sochi — App Summary (EN + RU)
 
-## Getting Started
+## EN
 
-First, run the development server:
+### What It Is
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js marketing site for pool construction and maintenance services in the Sochi region.  
+Includes lead capture, pricing, and portfolio content.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Who It Is For
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Homeowners and small hotel or property managers in Sochi seeking pool maintenance, repair, and chlorine-free water treatment.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### What It Does
 
-## Learn More
+- Service landing pages for maintenance, repair, and water treatment.
+- Chlorine-free pool positioning and related content.
+- Interactive monthly cost calculator (volume, visits, options).
+- Price table with service tiers.
+- Portfolio gallery of completed projects.
+- Contact page with phone links and web form.
+- Sends form submissions to email via SMTP.
 
-To learn more about Next.js, take a look at the following resources:
+### How It Works
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js App Router pages under `app/` render content and UI.
+- Shared UI components in `app/components/`.
+- Static content and rates in `lib/data.ts`.
+- Contact form -> `POST /api/contact` -> `nodemailer` -> SMTP -> `CONTACT_TO_EMAIL`.
+- Assets served from `public/` (icons, portfolio images).
+- Database: Not found in repo.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### How To Run
 
-## Deploy on Vercel
+1. `npm install`
+1. Copy `.env.example` to `.env.local` and fill in: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `CONTACT_TO_EMAIL`.
+1. `npm run dev` and open `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## RU
+
+### Что Это
+
+Маркетинговый сайт на Next.js для строительства и обслуживания бассейнов в Сочи.  
+Есть сбор заявок, цены и портфолио.
+
+### Для Кого
+
+Владельцы частных домов и небольших гостиниц в Сочи, которым нужно обслуживание, ремонт и водоподготовка без хлора.
+
+### Что Делает
+
+- Лендинги услуг: обслуживание, ремонт, водоподготовка.
+- Позиционирование и контент о бассейнах без хлора.
+- Калькулятор стоимости в месяц (объем, выезды, опции).
+- Прайс с типовыми тарифами.
+- Галерея выполненных объектов.
+- Контакты с телефонами и формой заявки.
+- Отправка заявок на email через SMTP.
+
+### Как Работает
+
+- Страницы App Router в `app/` рендерят контент и интерфейс.
+- Общие компоненты в `app/components/`.
+- Данные и тарифы в `lib/data.ts`.
+- Форма -> `POST /api/contact` -> `nodemailer` -> SMTP -> `CONTACT_TO_EMAIL`.
+- Статика в `public/` (иконки, изображения портфолио).
+- База данных: Not found in repo.
+
+### Как Запустить
+
+1. `npm install`
+1. Скопируйте `.env.example` в `.env.local` и заполните: `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `CONTACT_TO_EMAIL`.
+1. `npm run dev` и открыть `http://localhost:3000`.
+
+---
+
+Source: repo evidence only. Missing items are explicitly marked as "Not found in repo."
