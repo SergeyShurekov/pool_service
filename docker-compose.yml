@@ -1,7 +1,8 @@
 services:
   # Приложение Next.js (ваш сайт)
   web:
-    image: poolservice-web:latest
+    build: .
+    # image: poolservice-web:latest
     container_name: poolservice-web
     restart: always
     networks:
