@@ -1,34 +1,58 @@
 services:
-  # Reverse proxy (nginx)
+  # Приложение Next.js (ваш сайт)
+  web:
+    image: poolservice-web:latest
+    container_name: poolservice-web
+    restart: always
+    networks:
+      - shared-network
+    expose:
+      - "3000"
+    environment:
+      - VIRTUAL_HOST=obsluzivanie-baseynov-sochi.ru
+      - VIRTUAL_PORT=3000
+      - LETSENCRYPT_HOST=obsluzivanie-baseynov-sochi.ru
+      - LETSENCRYPT_EMAIL=shurekov@gmail.com
+      # Добавьте сюда ваши SMTP-переменные, если они есть
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - SMTP_FROM=${SMTP_FROM}
+      - CONTACT_TO_EMAIL=${CONTACT_TO_EMAIL}
+
+  # Reverse proxy (nginx) — обрабатывает HTTP/HTTPS и маршрутизацию
   nginx-proxy:
     image: nginxproxy/nginx-proxy:latest
+    container_name: nginx-proxy
+    restart: always
+    networks:
+      - shared-network
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
-    restart: always
-    networks:
-      - poolservice-network
+      - /etc/nginx/certs:/etc/nginx/certs
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
 
-  # Ваше приложение (Next.js)
-  web:
-    build: .
-    expose:
-      - "3000"               # вместо ports: используем expose, чтобы порт был виден только внутри сети
-    environment:
-      VIRTUAL_HOST: obsluzivanie-baseynov-sochi.ru
-      VIRTUAL_PORT: "3000"
-      SMTP_HOST: ${SMTP_HOST}
-      SMTP_PORT: ${SMTP_PORT}
-      SMTP_USER: ${SMTP_USER}
-      SMTP_PASS: ${SMTP_PASS}
-      SMTP_FROM: ${SMTP_FROM}
-      CONTACT_TO_EMAIL: ${CONTACT_TO_EMAIL}
-    networks:
-      - poolservice-network
+  # Автоматическое получение SSL-сертификатов (Let's Encrypt)
+  nginx-proxy-acme:
+    image: nginxproxy/acme-companion:latest
+    container_name: nginx-proxy-acme
     restart: always
+    networks:
+      - shared-network
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/nginx/certs:/etc/nginx/certs
+      - /etc/acme.sh
+    environment:
+      - DEFAULT_EMAIL=shurekov@gmail.com
+    depends_on:
+      - nginx-proxy
 
 networks:
-  poolservice-network:
+  shared-network:
     driver: bridge
