@@ -33,6 +33,11 @@ export const metadata: Metadata = {
     "ремонт бассейнов сочи",
     "строительство бассейнов сочи",
   ],
+  icons: {
+    icon: "/logo-typ.webp",
+    shortcut: "/logo-typ.webp",
+    apple: "/logo-typ.webp",
+  },
   openGraph: {
     locale: "ru_RU",
   },

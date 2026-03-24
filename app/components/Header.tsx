@@ -29,19 +29,23 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link
           href="/"
-          className="shrink-0"
+          className="group relative shrink-0"
           aria-label="Aqua Zen"
         >
-          <span className="flex flex-col items-center">
+          <span className="relative flex flex-col items-center">
+            <span
+              className="absolute top-1/2 -z-10 h-10 w-28 -translate-y-1/2 rounded-full bg-white/18 blur-2xl transition-opacity duration-300 group-hover:opacity-100 sm:h-12 sm:w-32"
+              aria-hidden="true"
+            />
             <Image
               src="/logo-typ.webp"
               alt="Aqua Zen"
               width={220}
               height={64}
               priority
-              className="h-10 w-auto sm:h-11"
+              className="h-10 w-auto drop-shadow-[0_6px_18px_rgba(255,255,255,0.16)] transition-transform duration-300 group-hover:scale-[1.02] sm:h-11"
             />
-            <span className="hidden pt-1 text-center font-heading text-sm font-semibold tracking-[0.18em] text-white/90 sm:block">
+            <span className="hidden pt-1 text-center font-heading text-sm font-semibold tracking-[0.18em] text-white/90 drop-shadow-[0_2px_10px_rgba(255,255,255,0.18)] transition-colors duration-300 group-hover:text-white sm:block">
               AQUA ZEN
             </span>
           </span>

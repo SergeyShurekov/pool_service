@@ -10,17 +10,25 @@ export default function CalculatorPage() {
   const [equipment, setEquipment] = useState(true);
   const [chemistry, setChemistry] = useState(true);
 
-  const base = Math.max(calculatorRates.minMonthly, volume * calculatorRates.basePerCubic);
+  const base = Math.max(
+    calculatorRates.minMonthly,
+    volume * calculatorRates.basePerCubic,
+  );
   const visitMultiplier = visits / 4;
   const total = Math.round(
-    (base * visitMultiplier) + (equipment ? calculatorRates.equipment : 0) + (chemistry ? calculatorRates.chemistry : 0)
+    base * visitMultiplier +
+      (equipment ? calculatorRates.equipment : 0) +
+      (chemistry ? calculatorRates.chemistry : 0),
   );
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
-      <h1 className="font-heading text-3xl font-bold">Калькулятор стоимости обслуживания бассейна</h1>
+      <h1 className="font-heading text-3xl font-bold">
+        Калькулятор стоимости обслуживания бассейна
+      </h1>
       <p className="mt-2 text-[var(--muted)]">
-        Узнайте ориентировочную стоимость обслуживания бассейна в Сочи в месяц. Точный расчёт после осмотра объекта.
+        Узнайте ориентировочную стоимость обслуживания бассейна в Сочи в месяц.
+        Точный расчёт после осмотра объекта.
       </p>
 
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
@@ -39,7 +47,9 @@ export default function CalculatorPage() {
               onChange={(e) => setVolume(Number(e.target.value))}
               className="mt-2 w-full accent-[var(--primary)]"
             />
-            <p className="mt-1 text-2xl font-semibold text-[var(--primary)]">{volume} м³</p>
+            <p className="mt-1 text-2xl font-semibold text-[var(--primary)]">
+              {volume} м³
+            </p>
           </div>
           <div>
             <label htmlFor="visits" className="block font-medium">
@@ -80,15 +90,20 @@ export default function CalculatorPage() {
         </div>
 
         <div className="rounded-xl border-2 border-[var(--primary)] bg-[var(--primary-light)]/30 p-6">
-          <p className="text-sm font-medium text-[var(--muted)]">Ориентировочная стоимость в месяц</p>
-          <p className="mt-2 text-4xl font-bold text-[var(--primary)]">{total.toLocaleString("ru-RU")} ₽</p>
+          <p className="text-sm font-medium text-[var(--muted)]">
+            Ориентировочная стоимость в месяц
+          </p>
+          <p className="mt-2 text-4xl font-bold text-[var(--primary)]">
+            {total.toLocaleString("ru-RU")} ₽
+          </p>
           <p className="mt-4 text-sm text-[var(--muted)]">
-            Включено: выезды техника по Сочи, контроль качества воды, обслуживание оборудования при отмеченных опциях.
-            Химия и расходники оплачиваются отдельно по факту или входят в пакет по договору.
+            Включено: выезды техника по Сочи, контроль качества воды,
+            обслуживание оборудования при отмеченных опциях. Химия и расходники
+            оплачиваются отдельно по факту или входят в пакет по договору.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href="tel:+78622601234"
+              href="tel:+79384185837"
               className="inline-flex items-center justify-center rounded-full bg-[var(--primary)] px-5 py-2.5 font-semibold text-white hover:bg-[var(--primary-hover)]"
             >
               Заказать расчёт
@@ -104,7 +119,10 @@ export default function CalculatorPage() {
       </div>
 
       <p className="mt-8 text-center text-sm text-[var(--muted)]">
-        <Link href="/obsluzhivanie-basseynov" className="text-[var(--primary)] hover:underline">
+        <Link
+          href="/obsluzhivanie-basseynov"
+          className="text-[var(--primary)] hover:underline"
+        >
           Подробнее об обслуживании бассейнов
         </Link>
       </p>

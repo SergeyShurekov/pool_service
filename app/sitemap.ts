@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const base = "https://pool-service-sochi.ru";
+const base = "https://obsluzivanie-baseynov-sochi.ru/";
 
 export const dynamic = "force-static";
 
