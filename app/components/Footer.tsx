@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const services = [
@@ -14,7 +15,22 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="font-heading text-lg font-bold text-white">Бассейн Сервис Сочи</p>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-3"
+              aria-label="Aqua Zen"
+            >
+              <Image
+                src="/logo-typ.webp"
+                alt="Aqua Zen"
+                width={220}
+                height={64}
+                className="h-11 w-auto"
+              />
+              <span className="font-heading text-lg font-bold tracking-[0.18em] text-white">
+                AQUA ZEN
+              </span>
+            </Link>
             <p className="mt-2 text-sm">
               Строительство и сервисное обслуживание бассейнов в Сочи. Чистая вода без хлора.
             </p>
@@ -63,7 +79,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-slate-700 pt-8 text-center text-sm text-slate-500">
-          © {new Date().getFullYear()} Бассейн Сервис Сочи. Обслуживание и строительство бассейнов в Сочи.
+          © {new Date().getFullYear()} Aqua Zen. Обслуживание и строительство бассейнов в Сочи.
         </div>
       </div>
     </footer>

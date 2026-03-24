@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -28,9 +29,22 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
         <Link
           href="/"
-          className="shrink-0 font-heading text-lg font-bold sm:text-xl"
+          className="shrink-0"
+          aria-label="Aqua Zen"
         >
-          Бассейн Сервис Сочи
+          <span className="flex flex-col items-center">
+            <Image
+              src="/logo-typ.webp"
+              alt="Aqua Zen"
+              width={220}
+              height={64}
+              priority
+              className="h-10 w-auto sm:h-11"
+            />
+            <span className="hidden pt-1 text-center font-heading text-sm font-semibold tracking-[0.18em] text-white/90 sm:block">
+              AQUA ZEN
+            </span>
+          </span>
         </Link>
 
         <nav

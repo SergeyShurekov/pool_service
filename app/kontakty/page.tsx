@@ -5,7 +5,7 @@ import { ContactForm } from "../components/ContactForm";
 export const metadata: Metadata = {
   title: "Контакты — обслуживание бассейнов в Сочи",
   description:
-    "Бассейн Сервис Сочи: адрес, телефон, заявка на обслуживание и строительство бассейнов в Сочи, Адлере, Красной Поляне.",
+    "Aqua Zen: адрес, телефон, заявка на обслуживание и строительство бассейнов в Сочи, Адлере, Красной Поляне.",
   keywords: ["обслуживание бассейна сочи", "обслуживание бассейнов сочи", "бассейн сервис сочи"],
 };
 
@@ -19,7 +19,7 @@ export default function KontaktyPage() {
 
       <div className="mt-10 grid gap-8 sm:grid-cols-2">
         <section className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-          <h2 className="font-heading text-xl font-semibold">Бассейн Сервис Сочи</h2>
+          <h2 className="font-heading text-xl font-semibold">Aqua Zen</h2>
           <p className="mt-2 text-[var(--muted)]">
             Регион: <strong className="text-[var(--foreground)]">{site.region}</strong>, Краснодарский край
           </p>

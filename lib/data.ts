@@ -1,5 +1,5 @@
 export const site = {
-  name: "Бассейн Сервис Сочи",
+  name: "Aqua Zen",
   phone: "+7 (938) 418-58-34",
   region: "Сочи",
   address: "г. Сочи, Краснодарский край",
