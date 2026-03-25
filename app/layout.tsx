@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { JsonLd } from "./components/JsonLd";
+import { YandexMetrica } from "./components/YandexMetrica";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -57,6 +58,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${manrope.variable} ${montserrat.variable}`}>
       <GoogleAnalytics gaId="G-KWNC7YKMRZ" />
+      <YandexMetrica counterId={process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID} />
       <body className="min-h-screen flex flex-col font-sans antialiased">
         <JsonLd />
         <a href="#main" className="skip-link">
