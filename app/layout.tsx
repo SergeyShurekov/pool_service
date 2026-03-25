@@ -58,8 +58,8 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${manrope.variable} ${montserrat.variable}`}>
       <GoogleAnalytics gaId="G-KWNC7YKMRZ" />
-      <YandexMetrica counterId={process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID} />
       <body className="min-h-screen flex flex-col font-sans antialiased">
+        <YandexMetrica counterId={process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID} />
         <JsonLd />
         <a href="#main" className="skip-link">
           Перейти к основному содержимому
