@@ -38,7 +38,7 @@ export function Header() {
               aria-hidden="true"
             />
             <Image
-              src="/logo-typ.webp"
+              src="/logo_transparent.png"
               alt="Aqua Zen"
               width={220}
               height={64}
