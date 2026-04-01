@@ -1,7 +1,10 @@
 services:
   # Приложение Next.js (ваш сайт)
   web:
-    build: .
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_YANDEX_METRIKA_ID: ${NEXT_PUBLIC_YANDEX_METRIKA_ID}
     # image: poolservice-web:latest
     container_name: poolservice-web
     restart: always
@@ -21,6 +24,7 @@ services:
       - SMTP_PASS=${SMTP_PASS}
       - SMTP_FROM=${SMTP_FROM}
       - CONTACT_TO_EMAIL=${CONTACT_TO_EMAIL}
+      - NEXT_PUBLIC_YANDEX_METRIKA_ID=${NEXT_PUBLIC_YANDEX_METRIKA_ID}
 
   # Reverse proxy (nginx) — обрабатывает HTTP/HTTPS и маршрутизацию
   nginx-proxy:
