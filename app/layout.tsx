@@ -18,7 +18,7 @@ const montserrat = Montserrat({
 });
 
 const YANDEX_METRIKA_ID =
-  process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID ?? "108237877";
+  process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID || "108237877";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://obsluzivanie-baseynov-sochi.ru"),
