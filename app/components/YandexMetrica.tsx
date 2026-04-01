@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 type YandexMetricaProps = {
   counterId?: string;
 };
@@ -11,8 +9,10 @@ export function YandexMetrica({ counterId }: YandexMetricaProps) {
 
   return (
     <>
-      <Script id="yandex-metrika" strategy="afterInteractive">
-        {`
+      <script
+        id="yandex-metrika"
+        dangerouslySetInnerHTML={{
+          __html: `
           (function(m,e,t,r,i,k,a){
               m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
               m[i].l=1*new Date();
@@ -32,8 +32,9 @@ export function YandexMetrica({ counterId }: YandexMetricaProps) {
             accurateTrackBounce: true,
             trackLinks: true
           });
-        `}
-      </Script>
+        `,
+        }}
+      />
       <noscript>
         <div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
