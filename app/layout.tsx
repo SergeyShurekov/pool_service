@@ -17,6 +17,9 @@ const montserrat = Montserrat({
   variable: "--font-heading",
 });
 
+const YANDEX_METRIKA_ID =
+  process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID ?? "108237877";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://obsluzivanie-baseynov-sochi.ru"),
   title: {
@@ -59,7 +62,7 @@ export default function RootLayout({
     <html lang="ru" className={`${manrope.variable} ${montserrat.variable}`}>
       <GoogleAnalytics gaId="G-KWNC7YKMRZ" />
       <body className="min-h-screen flex flex-col font-sans antialiased">
-        <YandexMetrica counterId={process.env.NEXT_PUBLIC_YANDEX_METRIKA_ID} />
+        <YandexMetrica counterId={YANDEX_METRIKA_ID} />
         <JsonLd />
         <a href="#main" className="skip-link">
           Перейти к основному содержимому
