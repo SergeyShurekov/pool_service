@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CTA } from "./components/CTA";
+import { HeroCarousel } from "./components/HeroCarousel";
 import { PriceTable } from "./components/PriceTable";
 import { portfolioItems } from "@/lib/data";
 
@@ -32,6 +33,9 @@ export default function Home() {
               +7 (938) 418-58-34
             </a>
           </div>
+        </div>
+        <div className="relative mx-auto mt-10 w-full lg:w-[86%]">
+          <HeroCarousel />
         </div>
       </section>
 

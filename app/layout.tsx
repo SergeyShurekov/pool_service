@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     "строительство бассейнов сочи",
   ],
   icons: {
-    icon: "/logo_transparent.webp",
-    shortcut: "/logo_transparent.webp",
-    apple: "/logo_transparent.webp",
+    icon: "/icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/icon.png",
   },
   openGraph: {
     locale: "ru_RU",
