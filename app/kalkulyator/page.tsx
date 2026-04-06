@@ -118,10 +118,10 @@ export default function CalculatorPage() {
         </div>
       </div>
 
-      <p className="mt-8 text-center text-sm text-[var(--muted)]">
+      <p className="mt-8 text-center text-base text-[var(--muted)] sm:text-lg">
         <Link
           href="/obsluzhivanie-basseynov"
-          className="text-[var(--primary)] hover:underline"
+          className="font-medium text-[var(--primary)] hover:underline"
         >
           Подробнее об обслуживании бассейнов
         </Link>
