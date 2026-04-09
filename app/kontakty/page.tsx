@@ -1,59 +1,77 @@
 import type { Metadata } from "next";
-import { site } from "@/lib/data";
+import Link from "next/link";
 import { ContactForm } from "../components/ContactForm";
+import { serviceCards, site } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Контакты — обслуживание бассейнов в Сочи",
+  title: "Контакты",
   description:
-    "Aqua Zen: адрес, телефон, заявка на обслуживание и строительство бассейнов в Сочи, Адлере, Красной Поляне.",
-  keywords: ["обслуживание бассейна сочи", "обслуживание бассейнов сочи", "бассейн сервис сочи"],
+    "Контакты Aqua Zen: обслуживание бассейнов в Сочи, телефон, быстрые ссылки на WhatsApp и Telegram, форма заявки.",
 };
 
 export default function KontaktyPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
-      <h1 className="font-heading text-3xl font-bold">Контакты</h1>
-      <p className="mt-3 text-lg text-[var(--muted)]">
-        Обслуживание и строительство бассейнов в Сочи. Звоните или оставьте заявку — перезвоним и рассчитаем стоимость.
-      </p>
+    <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      <section className="rounded-3xl bg-gradient-to-br from-teal-900 via-teal-800 to-cyan-900 px-6 py-10 text-white sm:px-10">
+        <h1 className="font-heading text-3xl font-bold sm:text-4xl">Контакты</h1>
+        <p className="mt-4 max-w-2xl text-lg text-teal-50">
+          Свяжитесь с нами по обслуживанию, чистке, ремонту или консервации
+          бассейна в Сочи. Ответим быстро и без долгой переписки.
+        </p>
+      </section>
 
-      <div className="mt-10 grid gap-8 sm:grid-cols-2">
-        <section className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
-          <h2 className="font-heading text-xl font-semibold">Aqua Zen</h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Регион: <strong className="text-[var(--foreground)]">{site.region}</strong>, Краснодарский край
-          </p>
-          <p className="mt-2 text-[var(--muted)]">{site.address}</p>
-          <p className="mt-4">
+      <div className="mt-10 grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+          <h2 className="font-heading text-2xl font-semibold">Как связаться</h2>
+          <p className="mt-4 text-[var(--muted)]">{site.address}</p>
+          <p className="mt-2 text-[var(--muted)]">Город: Сочи</p>
+          <p className="mt-6">
             <a
-              href={`tel:${site.phone.replace(/\s/g, "").replace(/[()]/g, "")}`}
-              className="text-xl font-semibold text-[var(--primary)] hover:underline"
+              href={site.phoneHref}
+              className="text-2xl font-semibold text-[var(--primary)] hover:underline"
             >
               {site.phone}
             </a>
           </p>
-          <p className="mt-2 text-sm text-[var(--muted)]">Пн–Пт: 9:00–18:00, Сб: 10:00–16:00</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href={site.whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-[var(--primary)] px-5 py-3 text-sm font-semibold text-white"
+            >
+              WhatsApp
+            </a>
+            <a
+              href={site.telegramHref}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-[var(--border)] px-5 py-3 text-sm font-semibold"
+            >
+              Telegram
+            </a>
+          </div>
+          <div className="mt-8">
+            <h2 className="font-heading text-xl font-semibold">Услуги</h2>
+            <ul className="mt-4 space-y-2 text-sm">
+              {serviceCards.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/${item.slug}`}
+                    className="text-[var(--primary)] hover:underline"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
-        <section className="rounded-xl border border-[var(--border)] bg-[var(--card)] p-6">
+        <section className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
           <ContactForm />
         </section>
       </div>
-
-      <section className="mt-10">
-        <h2 className="font-heading text-xl font-semibold">Зона обслуживания — Сочи и окрестности</h2>
-        <p className="mt-2 text-[var(--muted)]">
-          Выезжаем на объекты в Сочи, Адлер, Красная Поляна, Лазаревское, Имеретинка и другие районы Большого Сочи. Обслуживание бассейнов в Сочи и пригородах — по договору с фиксированной стоимостью в месяц.
-        </p>
-        <div className="mt-4 aspect-video w-full overflow-hidden rounded-xl border border-[var(--border)] bg-gradient-to-br from-slate-200 to-slate-300">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A416d1d5a06f90ff1f667bf9f74438499776854aedd79920ee8e4b57ab3c17e03&amp;source=constructor"
-            width="1131"
-            height="720"></iframe>
-          <div className="flex h-full items-center justify-center text-[var(--muted)]">
-            Карта: г. Сочи, Краснодарский край
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

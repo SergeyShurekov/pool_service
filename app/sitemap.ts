@@ -8,12 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/obsluzhivanie-basseynov",
-    "/obsluzhivanie-basseynov-dlya-chastnyh-domov",
-    "/remont-oborudovaniya-basseynov",
-    "/himicheskaya-obrabotka-vody",
-    "/basseyn-bez-hlora",
-    "/portfolios",
-    "/kalkulyator",
+    "/chistka-basseyna",
+    "/remont-basseynov",
+    "/konservaciya-basseyna",
+    "/blog",
+    "/blog/kak-chistit-basseyn",
+    "/blog/stoimost-obsluzhivaniya-basseyna",
+    "/blog/himiya-dlya-basseyna",
     "/kontakty",
   ];
   return routes.map((path) => ({

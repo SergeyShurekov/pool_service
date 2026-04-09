@@ -30,7 +30,7 @@ export default function PortfoliosPage() {
                 fill
                 className="object-cover"
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                priority={item.id === "1"}
+                priority={item.id === "arlekin"}
               />
             </div>
             <div className="p-4">

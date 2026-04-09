@@ -6,6 +6,8 @@ import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { JsonLd } from "./components/JsonLd";
 import { YandexMetrica } from "./components/YandexMetrica";
+import { MobileQuickActions } from "./components/MobileQuickActions";
+import { localBusinessSchema } from "@/lib/data";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -23,12 +25,11 @@ const YANDEX_METRIKA_ID =
 export const metadata: Metadata = {
   metadataBase: new URL("https://obsluzivanie-baseynov-sochi.ru"),
   title: {
-    default:
-      "Обслуживание бассейнов в Сочи — сервис, ремонт, строительство | Aqua Zen",
+    default: "Обслуживание бассейнов в Сочи | Aqua Zen",
     template: "%s | Aqua Zen",
   },
   description:
-    "Сервисное обслуживание и строительство бассейнов в Сочи. Чистая вода без хлора. Обслуживание частных бассейнов и бассейнов для гостиниц. Ремонт оборудования. Договор, прайс, гарантия.",
+    "Обслуживание, чистка, ремонт и консервация бассейнов в Сочи. Регулярный сервис, прайс, FAQ и быстрая заявка.",
   keywords: [
     "обслуживание бассейнов сочи",
     "сервисное обслуживание бассейнов",
@@ -63,7 +64,7 @@ export default function RootLayout({
       <GoogleAnalytics gaId="G-KWNC7YKMRZ" />
       <body className="min-h-screen flex flex-col font-sans antialiased">
         <YandexMetrica counterId={YANDEX_METRIKA_ID} />
-        <JsonLd />
+        <JsonLd data={localBusinessSchema} />
         <a href="#main" className="skip-link">
           Перейти к основному содержимому
         </a>
@@ -72,6 +73,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <MobileQuickActions />
       </body>
     </html>
   );

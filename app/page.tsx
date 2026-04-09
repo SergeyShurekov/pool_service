@@ -1,36 +1,79 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { CTA } from "./components/CTA";
+import { Checklist } from "./components/Checklist";
+import { ContactForm } from "./components/ContactForm";
+import { FaqAccordion } from "./components/FaqAccordion";
 import { HeroCarousel } from "./components/HeroCarousel";
+import { JsonLd } from "./components/JsonLd";
 import { PriceTable } from "./components/PriceTable";
-import { portfolioItems } from "@/lib/data";
+import { ServiceCard } from "./components/ServiceCard";
+import { faqItems, mainServiceSchema, serviceCards, site } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Обслуживание бассейнов в Сочи",
+  description:
+    "Обслуживание бассейнов в Сочи: чистка, ремонт, консервация, цены, FAQ и быстрая заявка на выезд специалиста.",
+};
+
+const advantages = [
+  {
+    title: "Опыт",
+    description:
+      "Работаем с частными бассейнами, мини-отелями и SPA-зонами в Сочи и ближайших районах.",
+  },
+  {
+    title: "Гарантия",
+    description:
+      "Работаем по понятному регламенту и помогаем не доводить бассейн до дорогого восстановления.",
+  },
+  {
+    title: "Быстрый выезд",
+    description:
+      "Оперативно подключаемся к объектам по Сочи, когда нужно срочно восстановить воду или оборудование.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={mainServiceSchema} />
+      <JsonLd data={faqSchema} />
+
       <section className="relative overflow-hidden bg-gradient-to-br from-teal-900 via-teal-800 to-cyan-900 px-4 py-16 text-white sm:px-6 sm:py-24">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-80" />
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2760%27 height=%2760%27 viewBox=%270%200%2060%2060%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%23ffffff%27 fill-opacity=%270.05%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-80" />
         <div className="relative mx-auto max-w-4xl text-center">
           <h1 className="font-heading text-3xl font-bold tracking-wide sm:text-4xl md:text-5xl">
-            Профессиональное обслуживание бассейнов: чистка, химия, ремонт.
+            Обслуживание бассейнов в Сочи
           </h1>
           <p className="mt-4 text-lg text-teal-100 sm:text-xl">
-            Регулярный сервис и строительство бассейнов в Сочи, контроль
-            качества воды, ремонт и водоподготовка. Для частного дома и малой
-            гостиницы. Договор, прайс, выезд техника.
+            Чистка, ремонт, консервация и регулярный сервис бассейнов в Сочи.
+            Работаем с частными объектами и небольшими гостиницами.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
-              href="/kalkulyator"
+              href="/kontakty"
               className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-teal-800 hover:bg-teal-50"
             >
-              Рассчитать стоимость
+              Заказать
             </Link>
             <a
-              href="tel:+79384185834"
+              href={site.phoneHref}
               className="inline-flex items-center justify-center rounded-full border-2 border-white px-6 py-3 font-semibold hover:bg-white/10"
             >
-              +7 (938) 418-58-34
+              {site.phone}
             </a>
           </div>
         </div>
@@ -40,190 +83,106 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <h2 className="font-heading text-2xl font-bold sm:text-3xl">
-          Услуги в Сочи
-        </h2>
-        <p className="mt-2 text-[var(--muted)]">
-          Техническое обслуживание бассейнов, ремонт оборудования,
-          водоподготовка без хлора.
-        </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            {
-              href: "/obsluzhivanie-basseynov",
-              title: "Обслуживание бассейнов",
-              icon: "/obsluzivanie-baseyna.svg",
-              desc: "Комплексное сервисное обслуживание, чистка, договор, прайс.",
-            },
-            {
-              href: "/obsluzhivanie-basseynov-dlya-chastnyh-domov",
-              title: "Для домов и гостиниц",
-              icon: "/hotel.svg",
-              desc: "Обслуживание частных бассейнов и бассейнов малых гостиниц в Сочи.",
-            },
-            {
-              href: "/remont-oborudovaniya-basseynov",
-              title: "Ремонт оборудования",
-              icon: "/servis-remont.svg",
-              desc: "Ремонт насосов, фильтров, замена оборудования для бассейнов.",
-            },
-            {
-              href: "/himicheskaya-obrabotka-vody",
-              title: "Водоподготовка",
-              icon: "/himiya-bez-hlora.svg",
-              desc: "Химическая обработка воды, водоподготовка. Ответы на вопросы про хлорку.",
-            },
-            {
-              href: "/basseyn-bez-hlora",
-              title: "Бассейн без хлора",
-              icon: "/basseyn-bez-hlora.svg",
-              desc: "Чистая вода без хлора — это возможно. Без запаха и вреда для кожи.",
-            },
-            {
-              href: "/kalkulyator",
-              title: "Калькулятор",
-              icon: "/rascitat-stoimost.svg",
-              desc: "Узнайте стоимость обслуживания бассейна в месяц за минуту.",
-            },
-          ].map((card) => (
-            <Link
-              key={card.href}
-              href={card.href}
-              className="group flex h-full flex-col rounded-xl border border-[var(--border)] bg-[var(--card)] p-7 shadow-sm transition hover:border-[var(--primary)] hover:shadow-md"
-            >
-              <Image
-                src={card.icon}
-                alt=""
-                width={288}
-                height={288}
-                className="mb-6"
-                aria-hidden
-                unoptimized
-              />
-              <h3 className="font-heading font-semibold text-[var(--primary)] group-hover:underline">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-base text-[var(--muted)]">{card.desc}</p>
-            </Link>
+        <h2 className="font-heading text-2xl font-bold sm:text-3xl">Наши услуги</h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+          {serviceCards.map((card) => (
+            <ServiceCard
+              key={card.slug}
+              href={`/${card.slug}`}
+              title={card.title}
+              description={card.description}
+            />
           ))}
         </div>
       </section>
 
       <section className="bg-slate-50 py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <h2 className="font-heading text-2xl font-bold sm:text-3xl">
-            Стоимость обслуживания бассейнов
-          </h2>
-          <p className="mt-2 text-[var(--muted)]">
-            Прозрачный прайс. Итоговая цена зависит от объёма бассейна и частоты
-            выездов. Рассчитайте в калькуляторе или оставьте заявку.
+          <h2 className="font-heading text-2xl font-bold sm:text-3xl">Цены</h2>
+          <p className="mt-3 max-w-3xl text-[var(--muted)]">
+            Прайс взят с действующей страницы обслуживания бассейнов. Точный расчет
+            зависит от объема бассейна, частоты выездов и состояния оборудования.
           </p>
           <div className="mt-6">
             <PriceTable />
           </div>
-          <p className="mt-4 text-center">
-            <Link
-              href="/kalkulyator"
-              className="font-semibold text-[var(--primary)] hover:underline"
-            >
-              Калькулятор стоимости обслуживания →
-            </Link>
-          </p>
         </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
         <h2 className="font-heading text-2xl font-bold sm:text-3xl">
-          Почему мы
+          Почему выбирают нас
         </h2>
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            "Вода без хлора — без запаха и раздражения кожи",
-            "Договор на обслуживание, регламент работ",
-            "Выезд техника по Сочи и Красной Поляне",
-            "Ремонт и обслуживание оборудования в одном месте",
-          ].map((item, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-3 rounded-lg border border-[var(--border)] bg-[var(--card)] p-4"
-            >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--primary-light)] text-[var(--primary)] font-semibold">
-                {i + 1}
-              </span>
-              <span className="text-sm">{item}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
-        <h2 className="font-heading text-2xl font-bold sm:text-3xl">
-          Наши объекты
-        </h2>
-        <p className="mt-2 text-[var(--muted)]">
-          Частные дома и малые гостиницы в Сочи, Адлере, Красной Поляне.
-        </p>
-
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {portfolioItems.slice(0, 3).map((item) => (
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {advantages.map((item) => (
             <article
-              key={item.id}
-              className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-sm transition hover:shadow-md"
+              key={item.title}
+              className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm"
             >
-              <div className="relative aspect-[4/3] w-full">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  priority={item.id === "1"}
-                />
-              </div>
-              <div className="p-4">
-                <span className="text-xs font-medium text-[var(--primary)]">
-                  {item.type}
-                </span>
-                <h2 className="mt-1 font-heading text-lg font-semibold">
-                  {item.title}
-                </h2>
-                <p className="mt-1 text-sm text-[var(--muted)]">
-                  {item.volume}
-                </p>
-                <p className="mt-2 text-sm text-[var(--muted)]">
-                  {item.description}
-                </p>
-              </div>
+              <h3 className="font-heading text-xl font-semibold">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[var(--muted)]">
+                {item.description}
+              </p>
             </article>
           ))}
         </div>
-
-        {/* <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            { title: "Частный бассейн, Адлер", type: "45 м³" },
-            { title: "Мини-отель, Красная Поляна", type: "80 м³" },
-            { title: "Дача, Лазаревское", type: "25 м³" },
-          ].map((p) => (
-            <div key={p.title} className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)]">
-              <div className="aspect-video bg-gradient-to-br from-teal-200 to-cyan-300" />
-              <div className="p-4">
-                <h3 className="font-semibold">{p.title}</h3>
-                <p className="text-sm text-[var(--muted)]">{p.type}</p>
-              </div>
-            </div>
-          ))}
-        </div> */}
-        <p className="mt-6 text-center">
-          <Link
-            href="/portfolios"
-            className="font-semibold text-[var(--primary)] hover:underline"
-          >
-            Вся галерея работ →
-          </Link>
-        </p>
       </section>
 
-      <CTA />
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+        <h2 className="font-heading text-2xl font-bold sm:text-3xl">
+          Как мы чистим бассейн
+        </h2>
+        <p className="mt-3 max-w-3xl text-[var(--muted)]">
+          Короткий и понятный чек-лист, по которому мы работаем на каждом выезде.
+        </p>
+        <div className="mt-6">
+          <Checklist />
+        </div>
+      </section>
+
+      <section
+        className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16"
+        itemScope
+        itemType="https://schema.org/FAQPage"
+      >
+        <h2 className="font-heading text-2xl font-bold sm:text-3xl">FAQ</h2>
+        <div className="mt-6">
+          <FaqAccordion items={faqItems} />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="rounded-3xl bg-gradient-to-br from-teal-900 via-teal-800 to-cyan-900 p-8 text-white">
+            <h2 className="font-heading text-2xl font-bold sm:text-3xl">
+              Закажите выезд специалиста
+            </h2>
+            <p className="mt-4 text-teal-50">
+              Оставьте имя и телефон. Мы быстро свяжемся, уточним задачу и
+              предложим удобный формат обслуживания.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href={site.phoneHref}
+                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-[var(--primary)]"
+              >
+                Позвонить
+              </a>
+              <a
+                href={site.whatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-3 font-semibold text-white"
+              >
+                WhatsApp
+              </a>
+            </div>
+          </div>
+          <div className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm">
+            <ContactForm />
+          </div>
+        </div>
+      </section>
     </>
   );
 }
