@@ -11,6 +11,7 @@ const nav = [
   { href: "/chistka-basseyna", label: "Чистка" },
   { href: "/remont-basseynov", label: "Ремонт" },
   { href: "/konservaciya-basseyna", label: "Консервация" },
+  { href: "/himiya-dlya-basseyna", label: "Химия" },
   { href: "/kontakty", label: "Контакты" },
 ];
 

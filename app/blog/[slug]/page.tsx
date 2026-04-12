@@ -23,7 +23,7 @@ export function generateMetadata({
   }
 
   return {
-    title: post.metaTitle,
+    title: { absolute: post.metaTitle },
     description: post.description,
   };
 }
@@ -68,30 +68,45 @@ export default function BlogPostPage({
             {post.sections.map((section) => (
               <section key={section.id} id={section.id}>
                 <h2 className="font-heading text-2xl font-bold">{section.title}</h2>
-                <div className="mt-4 space-y-4 text-base leading-7 text-[var(--muted)]">
-                  {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-                {"subsections" in section && section.subsections ? (
-                  <div className="mt-6 space-y-6">
-                    {section.subsections.map((subsection) => (
-                      <section key={subsection.title}>
-                        <h3 className="font-heading text-xl font-semibold">
-                          {subsection.title}
-                        </h3>
-                        <div className="mt-3 space-y-3 text-base leading-7 text-[var(--muted)]">
-                          {subsection.paragraphs.map((paragraph) => (
-                            <p key={paragraph}>{paragraph}</p>
-                          ))}
-                        </div>
-                      </section>
+                {section.paragraphs ? (
+                  <div className="mt-4 space-y-4 text-base leading-7 text-[var(--muted)]">
+                    {section.paragraphs.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
                     ))}
                   </div>
+                ) : null}
+                {section.bullets ? (
+                  <ul className="mt-4 space-y-3 text-base leading-7 text-[var(--muted)]">
+                    {section.bullets.map((bullet) => (
+                      <li
+                        key={bullet}
+                        className="rounded-2xl border border-[var(--border)] bg-[var(--card)] px-5 py-4"
+                      >
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
                 ) : null}
               </section>
             ))}
           </div>
+
+          {post.relatedLinks?.length ? (
+            <section className="mt-10 rounded-3xl border border-[var(--border)] bg-slate-50 p-6">
+              <h2 className="font-heading text-2xl font-bold">Полезные ссылки</h2>
+              <div className="mt-4 flex flex-wrap gap-3">
+                {post.relatedLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="inline-flex items-center rounded-full bg-[var(--primary)] px-5 py-3 text-sm font-semibold text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
         </div>
 
         <aside className="rounded-3xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm lg:sticky lg:top-28 lg:h-fit">

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { ServicePage } from "../components/ServicePage";
 import { servicePages } from "@/lib/data";
 
-const service = servicePages["obsluzhivanie-basseynov"];
+const service = servicePages["himiya-dlya-basseyna"];
 
 export const metadata: Metadata = {
   title: { absolute: service.metaTitle },
   description: service.description,
 };
 
-export default function ObsluzhivanieBasseynovPage() {
-  return <ServicePage slug="obsluzhivanie-basseynov" />;
+export default function HimiyaDlyaBasseynaPage() {
+  return <ServicePage slug="himiya-dlya-basseyna" />;
 }

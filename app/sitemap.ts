@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/chistka-basseyna",
     "/remont-basseynov",
     "/konservaciya-basseyna",
+    "/himiya-dlya-basseyna",
     "/blog",
     "/blog/kak-chistit-basseyn",
     "/blog/stoimost-obsluzhivaniya-basseyna",

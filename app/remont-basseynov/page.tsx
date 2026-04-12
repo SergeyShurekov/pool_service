@@ -5,7 +5,7 @@ import { servicePages } from "@/lib/data";
 const service = servicePages["remont-basseynov"];
 
 export const metadata: Metadata = {
-  title: service.metaTitle,
+  title: { absolute: service.metaTitle },
   description: service.description,
 };
 
