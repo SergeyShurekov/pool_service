@@ -3,44 +3,20 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-const slides = [
-  {
-    src: "/arlekin_do_posle.webp",
-    alt: "Результат обслуживания бассейна Арлекин",
-    title: "Частный дом, Адлер | 45 м³",
-    description: "Вода без хлора, чистота за 24 часа",
-  },
-  {
-    src: "/hotel_do_posle.webp",
-    alt: "Результат обслуживания бассейна в гостинице",
-    title: "Гостиничный комплекс, Головинка | 70 м³",
-    description: "Клиент хотел слить воду, но сэкономил 30 000 руб.",
-  },
-  {
-    src: "/imperial_do_posle.webp",
-    alt: "Результат обслуживания бассейна Imperial",
-    title: "Гостиничный комплекс, Сочи | 80 м³",
-    description: "Экстренный выезд, восстановили к утру!",
-  },
-  {
-    src: "/karkas_do_posle.webp",
-    alt: "Результат обслуживания каркасного бассейна",
-    title: "Каркасник при доме, Лазаревское | 30 м³",
-    description: "Сломался насос, восстановили, запустили!",
-  },
-];
+import {
+  beforeAfterSlides,
+  getBeforeAfterCaseHref,
+  type BeforeAfterSlide,
+} from "@/lib/data";
 
 export function HeroCarousel() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const openTimerRef = useRef<number | null>(null);
   const closeTimerRef = useRef<number | null>(null);
-  const [activeSlide, setActiveSlide] = useState<(typeof slides)[number] | null>(
-    null,
-  );
+  const [activeSlide, setActiveSlide] = useState<BeforeAfterSlide | null>(null);
   const [isViewerVisible, setIsViewerVisible] = useState(false);
 
-  const openViewer = (slide: (typeof slides)[number]) => {
+  const openViewer = (slide: BeforeAfterSlide) => {
     if (closeTimerRef.current) {
       window.clearTimeout(closeTimerRef.current);
       closeTimerRef.current = null;
@@ -87,6 +63,11 @@ export function HeroCarousel() {
       const gap = 16;
       const step = firstCard.offsetWidth + gap;
       const maxScroll = track.scrollWidth - track.clientWidth;
+
+      if (maxScroll <= 4) {
+        return;
+      }
+
       const nextScrollLeft = track.scrollLeft + step;
 
       track.scrollTo({
@@ -130,13 +111,18 @@ export function HeroCarousel() {
 
   return (
     <>
-      <div className="overflow-hidden rounded-[28px] border border-white/15 bg-white/10 px-1 py-1 shadow-2xl backdrop-blur-sm sm:px-2">
-        <div ref={trackRef} className="flex gap-4 overflow-hidden scroll-smooth">
-          {slides.map((slide, index) => (
+      <div className="overflow-hidden rounded-[30px] border border-white/50 bg-white/75 px-2 py-2 shadow-[0_28px_80px_rgba(15,23,42,0.12)] backdrop-blur-sm sm:px-3">
+        <div
+          ref={trackRef}
+          className="flex gap-5 overflow-x-auto scroll-smooth pb-2 md:grid md:grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] md:overflow-visible md:pb-0"
+        >
+          {beforeAfterSlides.map((slide, index) => (
             <figure
-              key={slide.src}
+              key={slide.slug}
               data-slide-card
-              className="flex min-w-[calc(100%-0.5rem)] shrink-0 flex-col overflow-hidden rounded-[24px] border border-white/15 bg-gradient-to-b from-white to-teal-50 text-slate-900 shadow-[0_20px_45px_rgba(15,118,110,0.18)] sm:min-w-[calc(50%-0.5rem)] xl:min-w-[calc(25%-0.75rem)]"
+              data-slide-slug={slide.slug}
+              data-case-href={getBeforeAfterCaseHref(slide.slug)}
+              className="flex w-[min(100%,24rem)] shrink-0 flex-col overflow-hidden rounded-[24px] border border-teal-100 bg-gradient-to-b from-white via-white to-teal-50/90 text-slate-900 shadow-[0_20px_45px_rgba(15,118,110,0.14)] md:w-auto md:min-w-0"
             >
               <div className="px-5 pb-3 pt-5">
                 <p className="min-h-[2.75rem] text-sm font-bold leading-snug text-teal-950">
@@ -170,7 +156,7 @@ export function HeroCarousel() {
                     alt={slide.alt}
                     fill
                     priority={index === 0}
-                    sizes="(min-width: 1280px) 16vw, (min-width: 640px) 33vw, 90vw"
+                    sizes="(min-width: 1280px) 26rem, (min-width: 640px) 24rem, 92vw"
                     className="object-contain p-2 transition duration-300 group-hover:scale-[1.02] sm:p-3"
                   />
                 </button>

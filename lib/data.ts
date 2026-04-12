@@ -117,6 +117,44 @@ export const portfolioItems = [
   },
 ] as const;
 
+export const beforeAfterSlides = [
+  {
+    slug: "arlekin-adler-45m3",
+    src: "/arlekin_do_posle.webp",
+    alt: "Результат обслуживания бассейна Арлекин",
+    title: "Частный дом, Адлер | 45 м³",
+    description: "Вода без хлора, чистота за 24 часа",
+  },
+  {
+    slug: "hotel-golovinka-70m3",
+    src: "/hotel_do_posle.webp",
+    alt: "Результат обслуживания бассейна в гостинице",
+    title: "Гостиничный комплекс, Головинка | 70 м³",
+    description: "Клиент хотел слить воду, но сэкономил 30 000 руб.",
+  },
+  {
+    slug: "imperial-sochi-80m3",
+    src: "/imperial_do_posle.webp",
+    alt: "Результат обслуживания бассейна Imperial",
+    title: "Гостиничный комплекс, Сочи | 80 м³",
+    description: "Экстренный выезд, восстановили к утру!",
+  },
+  {
+    slug: "karkas-lazarevskoe-30m3",
+    src: "/karkas_do_posle.webp",
+    alt: "Результат обслуживания каркасного бассейна",
+    title: "Каркасник при доме, Лазаревское | 30 м³",
+    description: "Сломался насос, восстановили, запустили!",
+  },
+] as const;
+
+export type BeforeAfterSlide = (typeof beforeAfterSlides)[number];
+export type BeforeAfterSlideSlug = BeforeAfterSlide["slug"];
+
+export function getBeforeAfterCaseHref(slug: BeforeAfterSlideSlug) {
+  return `/portfolio/${slug}`;
+}
+
 export const serviceCards = [
   {
     slug: "obsluzhivanie-basseynov",
