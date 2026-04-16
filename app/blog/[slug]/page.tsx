@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { blogPosts, serviceCards } from "@/lib/data";
+import { blogPosts } from "@/lib/blog-posts";
+import { serviceCards } from "@/lib/data";
 
 function getPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
@@ -11,12 +12,13 @@ export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const post = getPost(params.slug);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPost(slug);
 
   if (!post) {
     return {};
@@ -28,12 +30,13 @@ export function generateMetadata({
   };
 }
 
-export default function BlogPostPage({
+export default async function BlogPostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = getPost(params.slug);
+  const { slug } = await params;
+  const post = getPost(slug);
 
   if (!post) {
     notFound();

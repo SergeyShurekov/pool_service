@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { blogPosts } from "@/lib/blog-posts";
 
 const base = "https://obsluzivanie-baseynov-sochi.ru/";
 
@@ -13,10 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/konservaciya-basseyna",
     "/himiya-dlya-basseyna",
     "/blog",
-    "/blog/kak-chistit-basseyn",
-    "/blog/stoimost-obsluzhivaniya-basseyna",
-    "/blog/himiya-dlya-basseyna",
     "/kontakty",
+    ...blogPosts.map((post) => `/blog/${post.slug}`),
   ];
   return routes.map((path) => ({
     url: `${base}${path}`,

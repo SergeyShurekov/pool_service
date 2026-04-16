@@ -111,6 +111,14 @@ export const portfolioItems = [
     description: "Безопасная химическая обработка и регулярный уход.",
     image: "/portfolio/kinder_pool_cottage.webp",
   },
+  {
+    id: "regular",
+    title: "Бассейн при частной гостинице, каких много>",
+    type: "Гостиница, бассейн",
+    volume: "40 м3",
+    description: "Типичный пример сезонных работ по расконсервации и вводу в эксплуатацию после зимы",
+    image: "/dvor_s_basseynom_i_shezlongami_do_posle.webp",
+  }
 ] as const;
 
 export const beforeAfterSlides = [
@@ -141,6 +149,13 @@ export const beforeAfterSlides = [
     alt: "Результат обслуживания каркасного бассейна",
     title: "Каркасник при доме, Лазаревское | 30 м³",
     description: "Сломался насос, восстановили, запустили!",
+  },
+  {
+    slug: "dvor_s_basseynom_i_shezlongami",
+    src: "/dvor_s_basseynom_i_shezlongami_do_posle.webp",
+    alt: "бассейн при гостинице, до - после обработки",
+    title: "Бассейн при гостинице | 40 м³",
+    description: "Бассейн при гостинице, выход в сезон. Позвонили - запустили",
   },
 ] as const;
 
@@ -198,31 +213,31 @@ type ServiceSectionBase = {
 
 export type ServiceSection =
   | (ServiceSectionBase & {
-      type: "list";
-      items: readonly string[];
-    })
+    type: "list";
+    items: readonly string[];
+  })
   | (ServiceSectionBase & {
-      type: "cards";
-      items: readonly {
-        title: string;
-        description: string;
-      }[];
-    })
+    type: "cards";
+    items: readonly {
+      title: string;
+      description: string;
+    }[];
+  })
   | (ServiceSectionBase & {
-      type: "steps";
-      items: readonly string[];
-    })
+    type: "steps";
+    items: readonly string[];
+  })
   | (ServiceSectionBase & {
-      type: "price";
-      items: readonly {
-        label: string;
-        value: string;
-      }[];
-    })
+    type: "price";
+    items: readonly {
+      label: string;
+      value: string;
+    }[];
+  })
   | (ServiceSectionBase & {
-      type: "text";
-      paragraphs: readonly string[];
-    });
+    type: "text";
+    paragraphs: readonly string[];
+  });
 
 export type ServicePageData = {
   title: string;
@@ -479,161 +494,3 @@ export const localBusinessSchema = {
     "Сервисное обслуживание, чистка, ремонт, консервация и подбор химии для бассейнов в Сочи.",
   url: site.domain,
 };
-
-type BlogSection = {
-  id: string;
-  title: string;
-  paragraphs?: readonly string[];
-  bullets?: readonly string[];
-};
-
-type BlogLink = {
-  href: string;
-  label: string;
-};
-
-export type BlogPost = {
-  slug: string;
-  title: string;
-  metaTitle: string;
-  description: string;
-  intro: string;
-  toc: readonly {
-    id: string;
-    label: string;
-  }[];
-  sections: readonly BlogSection[];
-  relatedLinks?: readonly BlogLink[];
-};
-
-export const blogPosts: readonly BlogPost[] = [
-  {
-    slug: "kak-chistit-basseyn",
-    title: "Как чистить бассейн",
-    metaTitle: "Как чистить бассейн — этапы и советы",
-    description:
-      "Как чистить бассейн: этапы чистки, частые ошибки и практические советы для владельцев бассейнов.",
-    intro:
-      "Собрали короткую памятку по чистке бассейна, чтобы было проще поддерживать воду прозрачной и не доводить объект до дорогого восстановления.",
-    toc: [
-      { id: "etapy-chistki", label: "Этапы чистки" },
-      { id: "oshibki", label: "Ошибки" },
-      { id: "sovety", label: "Советы" },
-    ],
-    sections: [
-      {
-        id: "etapy-chistki",
-        title: "Этапы чистки",
-        bullets: [
-          "Соберите мусор с поверхности и проверьте состояние воды.",
-          "Очистите стенки, дно и ватерлинию.",
-          "Промойте фильтр и скорректируйте химию.",
-        ],
-      },
-      {
-        id: "oshibki",
-        title: "Ошибки",
-        bullets: [
-          "Добавлять химию без измерения pH и хлора.",
-          "Игнорировать загрязнение фильтра.",
-          "Откладывать чистку до сильного помутнения воды.",
-        ],
-      },
-      {
-        id: "sovety",
-        title: "Советы",
-        bullets: [
-          "Проверяйте воду регулярно, особенно в сезон жары.",
-          "Не запускайте бассейн после дождей и активного использования.",
-          "При стойком помутнении лучше заказать профессиональную чистку.",
-        ],
-      },
-    ],
-    relatedLinks: [{ href: "/chistka-basseyna", label: "Перейти к услуге чистки бассейна" }],
-  },
-  {
-    slug: "stoimost-obsluzhivaniya-basseyna",
-    title: "Сколько стоит обслуживание бассейна",
-    metaTitle: "Сколько стоит обслуживание бассейна в Сочи",
-    description:
-      "От чего зависит стоимость обслуживания бассейна: объём, состояние воды, частота выездов и примеры цен.",
-    intro:
-      "Стоимость обслуживания зависит не только от размера чаши. Ниже коротко разобрали основные факторы и ориентиры по цене.",
-    toc: [
-      { id: "ot-chego-zavisit-cena", label: "От чего зависит цена" },
-      { id: "primery", label: "Примеры" },
-    ],
-    sections: [
-      {
-        id: "ot-chego-zavisit-cena",
-        title: "От чего зависит цена",
-        bullets: [
-          "От объёма бассейна и расхода химии.",
-          "От частоты обслуживания и графика выездов.",
-          "От состояния воды и исправности оборудования.",
-        ],
-      },
-      {
-        id: "primery",
-        title: "Примеры",
-        bullets: [
-          "Ежемесячное обслуживание — от 6 000 ₽.",
-          "Разовое обслуживание — от 5 000 ₽.",
-          "Если есть неисправности оборудования, цена увеличивается после диагностики.",
-        ],
-      },
-    ],
-    relatedLinks: [
-      {
-        href: "/obsluzhivanie-basseynov",
-        label: "Перейти к услуге обслуживания бассейнов",
-      },
-    ],
-  },
-  {
-    slug: "himiya-dlya-basseyna",
-    title: "Химия для бассейна: что использовать",
-    metaTitle: "Химия для бассейна: что использовать",
-    description:
-      "Какая химия для бассейна используется на практике, какие ошибки встречаются чаще всего и куда обратиться за обслуживанием.",
-    intro:
-      "Химия для бассейна работает только при правильной дозировке и регулярном контроле воды. Вот базовые ориентиры, которые помогут не ошибиться.",
-    toc: [
-      { id: "bazovye-sredstva", label: "Какие средства используют" },
-      { id: "tipichnye-oshibki", label: "Частые ошибки" },
-      { id: "kuda-obratitsya", label: "Связанные услуги" },
-    ],
-    sections: [
-      {
-        id: "bazovye-sredstva",
-        title: "Какие средства используют",
-        bullets: [
-          "Хлор для дезинфекции воды.",
-          "Альгициды для борьбы с водорослями.",
-          "Коагулянты для улучшения прозрачности воды.",
-        ],
-      },
-      {
-        id: "tipichnye-oshibki",
-        title: "Частые ошибки",
-        bullets: [
-          "Передозировка химии.",
-          "Неправильный баланс pH.",
-          "Попытка решить проблему химией без чистки и проверки фильтрации.",
-        ],
-      },
-      {
-        id: "kuda-obratitsya",
-        title: "Связанные услуги",
-        paragraphs: [
-          "Если нужна не только химия, но и полный контроль воды, лучше сочетать подбор средств с регулярным обслуживанием, чисткой или выездной диагностикой.",
-        ],
-      },
-    ],
-    relatedLinks: [
-      { href: "/himiya-dlya-basseyna", label: "Подбор химии для бассейна" },
-      { href: "/obsluzhivanie-basseynov", label: "Обслуживание бассейнов" },
-      { href: "/chistka-basseyna", label: "Чистка бассейна" },
-    ],
-  },
-] as const;
