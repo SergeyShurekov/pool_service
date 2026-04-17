@@ -48,7 +48,7 @@ export default async function BlogPostPage({
         <div>
           <h1 className="font-heading text-3xl font-bold sm:text-4xl">{post.title}</h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-[var(--muted)]">
-            {post.intro}
+            {post.subtitle}
           </p>
 
           <nav
@@ -71,10 +71,29 @@ export default async function BlogPostPage({
             {post.sections.map((section) => (
               <section key={section.id} id={section.id}>
                 <h2 className="font-heading text-2xl font-bold">{section.title}</h2>
+                {section.subtitle ? (
+                  <p className="mt-4 max-w-3xl text-base leading-7 text-[var(--muted)]">
+                    {section.subtitle}
+                  </p>
+                ) : null}
                 {section.paragraphs ? (
                   <div className="mt-4 space-y-4 text-base leading-7 text-[var(--muted)]">
                     {section.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+                ) : null}
+                {section.items ? (
+                  <div className="mt-6 space-y-6">
+                    {section.items.map((item) => (
+                      <section key={item.title}>
+                        <h3 className="font-heading text-xl font-semibold">{item.title}</h3>
+                        <div className="mt-3 space-y-3 text-base leading-7 text-[var(--muted)]">
+                          {item.paragraphs.map((paragraph) => (
+                            <p key={paragraph}>{paragraph}</p>
+                          ))}
+                        </div>
+                      </section>
                     ))}
                   </div>
                 ) : null}

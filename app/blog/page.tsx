@@ -23,7 +23,9 @@ export default function BlogPage() {
             key={post.slug}
             className="flex h-full flex-col rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 shadow-sm"
           >
-            <h2 className="font-heading text-2xl font-semibold">{post.title}</h2>
+            <h2 className="font-heading text-2xl font-semibold">
+              {post.title}
+            </h2>
             <p className="mt-4 flex-1 text-sm leading-6 text-[var(--muted)]">
               {post.description}
             </p>
