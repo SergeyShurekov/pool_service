@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog-posts";
 
-const base = "https://obsluzivanie-baseynov-sochi.ru/";
+const base = "https://obsluzivanie-baseynov-sochi.ru";
 
 export const dynamic = "force-static";
 
@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogPosts.map((post) => `/blog/${post.slug}`),
   ];
   return routes.map((path) => ({
-    url: `${base}${path}`,
+    url: path === "" ? `${base}/` : `${base}${path}`,
     lastModified: new Date(),
     changeFrequency: path === "" ? "weekly" as const : "monthly" as const,
     priority: path === "" ? 1 : 0.8,
