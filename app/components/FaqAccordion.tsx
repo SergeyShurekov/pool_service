@@ -18,9 +18,6 @@ export function FaqAccordion({
           <article
             key={item.question}
             className="overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--card)] shadow-sm"
-            itemScope
-            itemProp="mainEntity"
-            itemType="https://schema.org/Question"
           >
             <h3 className="text-lg font-semibold">
               <button
@@ -29,7 +26,7 @@ export function FaqAccordion({
                 onClick={() => setOpenIndex(isOpen ? null : index)}
                 aria-expanded={isOpen}
               >
-                <span itemProp="name">{item.question}</span>
+                <span>{item.question}</span>
                 <span
                   className={`text-2xl leading-none text-[var(--primary)] transition-transform ${
                     isOpen ? "rotate-45" : ""
@@ -48,11 +45,8 @@ export function FaqAccordion({
               <div className="overflow-hidden">
                 <div
                   className="px-5 pb-5 text-sm leading-6 text-[var(--muted)]"
-                  itemScope
-                  itemProp="acceptedAnswer"
-                  itemType="https://schema.org/Answer"
                 >
-                  <p itemProp="text">{item.answer}</p>
+                  <p>{item.answer}</p>
                 </div>
               </div>
             </div>

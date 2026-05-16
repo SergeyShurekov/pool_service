@@ -317,11 +317,7 @@ export default function ChistkaBasseynaPage() {
           </div>
         </section>
 
-        <section
-          className="mt-14"
-          itemScope
-          itemType="https://schema.org/FAQPage"
-        >
+        <section className="mt-14">
           <h2 className="font-heading text-2xl font-bold sm:text-3xl">
             Часто задаваемые вопросы
           </h2>
